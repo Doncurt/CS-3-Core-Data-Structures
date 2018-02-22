@@ -16,13 +16,27 @@ def decode(digits, base):
     base: int -- base of given number
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
+    '''
+    1. Comes in as a string
+    2. Base if compared first, if it meets the conditions, both digits and number
+    are passed into int for conversions
+
+
+    '''
+
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
+    # TODO: Decode digits from binary (base 2) //DONE
+
+    # TODO: Decode digits from hexadecimal (base 16)//DONE
+
+    # TODO: Decode digits from any base (2 up to 36)//DONE
     # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
+    if base == 2:
+        return int(digits, 2)
+    elif base == 16:
+        return int(digits,16)
+    else:
+        return int(digits,base)
 
 
 def encode(number, base):
@@ -34,12 +48,21 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+
     # TODO: Encode number in binary (base 2)
     # ...
     # TODO: Encode number in hexadecimal (base 16)
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
+    nums = {'0':'000','1':'001','2':'010','3':'011',
+             '4':'100','5':'101','6':'110','7':'111'}
+    octal = "%o" % n # convert to octal string
+    #empty string for output
+    binStr = ''
+    # convert octal to its binary equivalent
+    for c in octal: binStr += nums[c]
+    print(type(binStr))
 
 
 def convert(digits, base1, base2):
