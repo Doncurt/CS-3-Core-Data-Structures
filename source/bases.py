@@ -121,6 +121,15 @@ def convert(digits, base1, base2):
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
     return encode(decode(digits, base1), base2)
+'''
+STRETCH CHALLENGES!!!
+
+
+'''
+def fractToBinary(fraction):
+
+    
+    pass
 
 def main():
     """Read command-line arguments and convert given digits between bases."""
