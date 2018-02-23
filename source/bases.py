@@ -30,7 +30,7 @@ def decode(digits, base):
     2. Base if compared first, if it meets the conditions, both digits and number
     are passed into int for conversions
 
-
+    JUST FOUND OUT THAT I CANT USE THE INT FUNCTION
     '''
 
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
@@ -127,8 +127,8 @@ STRETCH CHALLENGES!!!
 
 '''
 def fractToBinary(fraction):
-    int_to_left,fractional = fraction.split('.')
 
+    int_to_left,fractional = fraction.split('.')
     #print(int_to_left)
     #print(fractional)
     # turn from binary to int now
