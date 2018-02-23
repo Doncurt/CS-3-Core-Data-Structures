@@ -1,6 +1,6 @@
 #!python
 
-from bases import decode, encode, convert
+from bases import decode, encode, convert,fractToBinary
 import unittest
 
 
@@ -264,6 +264,17 @@ class BasesConvertTest(unittest.TestCase):
         assert convert('1110101001100010', 2, 16) == 'ea62'
         assert convert('1111101101110011', 2, 16) == 'fb73'
 
+
+class fractToBinaryTest(unittest.TestCase):
+
+    '''
+    test cases for the first stretch challenge passing in a fractional( in int for to make it interesting) then spitting out a string representation
+
+    '''
+    def test_binary_to_int_fractional(self):
+        assert fractToBinary('1101.1011') =='13.11'
+        assert fractToBinary('110000111.1010100010111') =='391.5399'
+        assert fractToBinary('01010111.00011001') =='87.25'
 
 if __name__ == '__main__':
     unittest.main()

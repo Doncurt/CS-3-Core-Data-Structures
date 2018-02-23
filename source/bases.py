@@ -127,9 +127,23 @@ STRETCH CHALLENGES!!!
 
 '''
 def fractToBinary(fraction):
+    int_to_left,fractional = fraction.split('.')
 
-    
-    pass
+    #print(int_to_left)
+    #print(fractional)
+    # turn from binary to int now
+    int_to_left =int(int_to_left, 2)
+    fractional = int(fractional,2)
+    #turn into string so that they can be joined together
+    int_to_left_str = str(int_to_left)
+    fractional_str = str(fractional)
+    # convert to a single string
+    converted =[int_to_left_str,fractional_str]
+    #join on .
+    converted = '.'.join(converted)
+
+    return converted
+
 
 def main():
     """Read command-line arguments and convert given digits between bases."""
