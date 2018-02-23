@@ -116,27 +116,7 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
-    if str(digits)[0]=='-':
-        digits = str(digits)[1:]
-        neg=1
-    else:
-        neg=0
-
-    # make an integer out of the number
-    x=int(0)
-    for digit in str(digits):
-       x = x*len(base1) + base1.index(digit)
-
-    # create the result in base 'len(base2)'
-    res=""
-    while x>0:
-        digit = x % len(base2)
-        res = base2[digit] + res
-        x /= len(base2)
-    if neg:
-        res = "-"+res
-
-    return res
+    return encode(decode(digits, base1), base2)
 
 def main():
     """Read command-line arguments and convert given digits between bases."""
