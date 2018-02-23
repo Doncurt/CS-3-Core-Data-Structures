@@ -78,12 +78,16 @@ def encode(number, base):
     if base == :
 '''
 
-    'convert an integer to its string representation in a given base'
+    #sets up the alpahbet incase of hex
     alphabet='0123456789abcdefghijklmnopqrstuvwxyz'
+    #if the given base isnt base two( and there for more than base two but nees account for higher types
+    # then go to the next loop)
     if base<2 or base>len(alphabet):
+        #due to base 64 having more charactors, the alphabet has to be assigned to something using all of them
         if base==64: # assume base64 rather than raise error
             alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
         else:
+            #raises an error that screams that the base you put in is out of range..basically that its higher than what can be handled for this loop
             raise AssertionError("int2base base out of range")
     if isinstance(number,complex): # return a tuple
         return ( int2base(number.real,base,alphabet) , int2base(number.imag,base,alphabet) )
