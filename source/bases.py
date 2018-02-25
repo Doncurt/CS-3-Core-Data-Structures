@@ -70,12 +70,6 @@ def encode(number, base):
         for c in octal: binary_Str += nums[c]
         return binary_Str
 
-    # TODO: Encode number in hexadecimal (base 16)
-    if base == 16:
-        n_string = hex(n).replace('0x','')
-            return(n_string)
-    # TODO: Encode number in any base (2 up to 36)
-    if base == :
 '''
 
     #sets up the alpahbet incase of hex
@@ -88,7 +82,7 @@ def encode(number, base):
             alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
         else:
             #raises an error that screams that the base you put in is out of range..basically that its higher than what can be handled for this loop
-            raise AssertionError("int2base base out of range")
+            raise AssertionError(" All about that base...and its out of range")
     if isinstance(number,complex): # return a tuple
         return ( int2base(number.real,base,alphabet) , int2base(number.imag,base,alphabet) )
     if number<=0:
