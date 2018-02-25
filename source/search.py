@@ -4,7 +4,7 @@ def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""
     # implement linear_search_iterative and linear_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
-    return linear_search_iterative(array, item)
+    return linear_search_recursive(array, item)
     # return linear_search_recursive(array, item)
 
 
@@ -18,7 +18,18 @@ def linear_search_iterative(array, item):
 
 def linear_search_recursive(array, item, index=0):
     # TODO: implement linear search recursively here
-    pass
+    #if you find the item first, then all your work is done before it even begins since that will be o(1)
+    #as per the instructions it returns the item
+    if array[index]== item:
+        #return the index of the item
+        return index
+    # Asking in youve searched all of the indexis and not found the item in question
+    if index >=len(array) :
+        return None
+    #since its a lenear and not binary i shiuld jsut have to add 1 to the index and it should woulr
+    return linear_search_recursive(array, item, index+1)
+
+    #UPDATE: IT WORKS!!!!!
     # once implemented, change linear_search to call linear_search_recursive
     # to verify that your recursive implementation passes all tests
 
@@ -33,7 +44,21 @@ def binary_search(array, item):
 
 def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
-    pass
+    #declar the upper and lowe bounds
+    if len(array)==0 or len(array)==1:
+        return 0
+    if array[0]== item: return 0
+    lower,upper = 0, len(array)-1
+    while lower <= upper:
+        middle = (lower + upper)// 2 #needed for integer division incase the list is odd numbered
+        if array[middle] < item:
+            lower = middle + 1
+        if item < array[middle]:
+            upper = middle -1
+        if item == array[middle]:
+            return middle
+    return None
+
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
 
