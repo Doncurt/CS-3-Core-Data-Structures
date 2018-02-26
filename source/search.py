@@ -1,11 +1,11 @@
-#!python
+    #!python
 
 def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""
     # implement linear_search_iterative and linear_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
     return linear_search_iterative(array, item)
-    # return linear_search_recursive(array, item)
+    #return linear_search_recursive(array, item)
 
 
 def linear_search_iterative(array, item):
@@ -20,16 +20,18 @@ def linear_search_recursive(array, item, index=0):
     # TODO: implement linear search recursively here
     #if you find the item first, then all your work is done before it even begins since that will be o(1)
     #as per the instructions it returns the item
+
     if array[index]== item:
         #return the index of the item
         return index
 
     # Asking in youve searched all of the indexis and not found the item in question
-    if index ==len(array) :
+    if index ==len(array)-1:
         return None
+    else:
+        return linear_search_recursive(array, item, index+ 1)
     #since its a lenear and not binary i shiuld jsut have to add 1 to the index and it should woulr
 
-    return linear_search_recursive(array, item, index+ 1)
 
     #UPDATE: IT WORKS!!!!!
     # once implemented, change linear_search to call linear_search_recursive
@@ -68,28 +70,26 @@ def binary_search_iterative(array, item):
 
 
 
+
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
-    if len(array) == 0:
-        return None
-    if array[0]== item: return 0
-    #learning more about slices
-    #slices everything from the middle down the array[0]
-
-    left = array[int(len(array)/2) + 1:]
-    #slices everything grom the biggining to the middle defined as half of the length of the array
-    right = array[:int(len(array)//2)]
-
-    mid = (array[(int(len(array)/2))])  # integer division for slicing in next step
-    if item == mid : return (int(len(array)/2))
-    # take the left array
-    elif item < mid: return binary_search_recursive(left, item, left= None, right= None)
-    #take right slice of the array
-    elif item > mid: return binary_search_recursive(right, item, left= None, right= None)
-    # if its not found return None since it doesnt exist
-
-
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests
-    else:
+    #the purpose of this is that before the recursion starts the values of left right and mid arent defined, for the fist ieration thye have to be defined as the length of the list, since that is what we're checking
+    if left == None and right == None:
+        left = 0
+        right = len(array) -1
+    elif left > right:
+      #basically a check for iff there is anything in the list at all
       return None
+      #for each ineation this defines the middle as the left value ( which is mutable) - the rigth value( which is mutable)
+    mid = int((left + right) / 2)
+    #if the item is  the middle value
+    if item == array[mid]:
+        return mid
+    # if the item is smaller than the item at the mid point, the left is static, but the new right( end of the check in the array), is now the middle -1( since we know it isnt in that side of the list)
+    elif item < array[mid]:
+        return binary_search_recursive(array, item, left, mid - 1)
+    else:
+        #if the item is larger than the mid value, the new array range to check is now, from the middle plus 1 all the way to the defined end
+        return binary_search_recursive(array, item, mid + 1, right)
+    # if it aint found, then tell is it isnt
+    return None
