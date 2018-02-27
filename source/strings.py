@@ -5,18 +5,20 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-    '''
-    if text in pattern:
+    # becuase python string is not using .strip, strings will always have an empty string
+    if text == '' or pattern =='':
         return True
-        need to turn this into a les
-        this will be used in both find index and in find all indexes
     '''
-    substr_len= len(text)
-    for i in range(0,len(pattern)):
-
-        if pattern[i:i+substr_len]== text:
+    INERATIVE
+    '''
+    #take a substring(will be used to creep forward)
+    substr_len= len(pattern)
+    #goes through the entire length of the list
+    for i in range(len(text)):
+        if text[i:i+substr_len] == pattern:
             return True
-        return False
+    return False
+
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
