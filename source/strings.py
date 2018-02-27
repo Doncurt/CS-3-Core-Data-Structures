@@ -1,13 +1,18 @@
 #!python
 
+def empty_string(text,pattern):
+    """helper function to check for empty strings"""
+    if text == '' or pattern =='':
+        return True
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
     # becuase python string is not using .strip, strings will always have an empty string
-    if text == '' or pattern =='':
+    if empty_string(text,pattern):
         return True
+
     '''
     INERATIVE
     '''
@@ -26,6 +31,9 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
+    if empty_string(text,pattern):
+        return 0
+
 
 
 def find_all_indexes(text, pattern):
