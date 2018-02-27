@@ -5,7 +5,18 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
+    '''
+    if text in pattern:
+        return True
+        need to turn this into a les
+        this will be used in both find index and in find all indexes
+    '''
+    substr_len= len(text)
+    for i in range(0,len(pattern)):
 
+        if pattern[i:i+substr_len]== text:
+            return True
+        return False
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
