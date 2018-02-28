@@ -18,21 +18,15 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    #return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    if len(text) == 0 or len(text)== 1:
-        return True
-    # check1= text[0].lower()
-    # check2 = text[1].lower()
-    #
-    # check1_con= int(check1)
-    # check2_con = int(check2)
-    # if len(text)== 2 and check1_con != check2_con:
-    #     return False
+    # if len(text) == 0 or len(text)== 1:
+    #     return True
+
         #reverse the text
     upside_down = reverse(text)
     #haky but for 2 letter comparisons
@@ -65,8 +59,10 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
-
+    if len(text) == 0 or len(text)== 1:
+        return True
     #reverse the text
+    if right == 1: return True
     upside_down = reverse(text)
     #haky but for 2 letter comparisons
     # if len(text)==2:
@@ -79,6 +75,7 @@ def is_palindrome_recursive(text, left=None, right=None):
         if text[right]== upside_down[left]:
           #print(text[sentinel] +' '+upside_down[usd_count] )
           right= right -1
+
           left= left + 1
           return is_palindrome_recursive(text, right , left)
         else: return False
