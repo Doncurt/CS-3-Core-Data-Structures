@@ -32,7 +32,7 @@ def find_index(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
     if empty_string(text,pattern):
-        return 0
+        return
 
 
 
