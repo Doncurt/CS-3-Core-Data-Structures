@@ -61,8 +61,8 @@ def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
     if len(text) == 0 or len(text)== 1:
         return True
-    #reverse the text
     if right == 1: return True
+    #reverse the text
     upside_down = reverse(text)
     #haky but for 2 letter comparisons
     # if len(text)==2:
