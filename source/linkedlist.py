@@ -6,6 +6,7 @@ class Node(object):
         """Initialize this node with the given data."""
         self.data = data
         self.next = None
+        self.previous = None
 
     def __repr__(self):
         """Return a string representation of this node."""
@@ -73,28 +74,62 @@ class LinkedList(object):
     def get_at_index(self, index):
         """Return the item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) under what conditions? [TODO]
+        Worst case running time: o(n) under what conditions? [TODO]"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node at the given index and return its data
+        node = self.head
+        node_index = 0
+        data = node.data
+
+        while node_index != index:
+            node_index += 1
+            node = node.next
+            data = node.data
+        return data
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
         raise ValueError if the given index is out of range of the list size.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) under what conditions? [TODO]
+        Worst case running time: O(n) under what conditions? [TODO]"""
         # Check if the given index is out of range and if so raise an error
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
+        #Need to do an indepth review on hacker rank since im stuck
+        #if its an empty list, i chose to prepend to take care of the null situation
+        if index == 0:
+            self.prepend(item)
+        #if you end up hitting the tail
+        elif index == self.size:
+            self.append(item)
+        #handling for the new node to be in the middle
+        else:
+            new_node = Node(item)
+            node = self.head
+            previous = None
+            #forloop untill the end of the loop
+            for i in range(index):
+                #  previous node to the to the previous node
+                previous = node
+                # new node node is now next node in list
+                node = node.next
+            previous.next = new_node
+            new_node.next = node
+            #increse the size
+            self.size += 1
+
+
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: O(1) under what conditions? [TODO]"""
         # Create a new node to hold the given item
         new_node = Node(item)
+        self.size += 1
         # Check if this linked list is empty
         if self.is_empty():
             # Assign head to new node
@@ -107,9 +142,10 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        Best and worst case running time: ??? under what conditions? [TODO]"""
+        Best and worst case running time: O(1) under what conditions? [TODO]"""
         # Create a new node to hold the given item
         new_node = Node(item)
+        self.size += 1
         # Check if this linked list is empty
         if self.is_empty():
             # Assign tail to new node
@@ -145,7 +181,24 @@ class LinkedList(object):
         Worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
-        pass
+
+        curr = self.head
+        #found a better way to get a targeted number due to a stack overflow article taking notws
+        found = self.find(lambda i: i == old_item)
+        #neeed to implement double loop
+        #While the item isnt none( end of the LL)
+        if found is not None:
+            #While you havent reached the end of the ll
+            while curr is not None:
+                #if the item has the item were looking for
+                if curr.data is found:
+                    #replace it and then return it
+                    curr.data = new_item
+                    return curr
+                curr = curr.next
+        #found out i had toraise value error otherwise it wouldnt pass the test..LET ME BE LAZY, ALAN
+        raise ValueError('Item not found: {}'.format(old_item))
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -163,6 +216,7 @@ class LinkedList(object):
             if node.data == item:
                 # We found data matching the given item, so update found flag
                 found = True
+                self.size -= 1
             else:
                 # Skip to the next node
                 previous = node
@@ -204,6 +258,8 @@ def test_linked_list():
     ll.append('B')
     print(ll)
     ll.append('C')
+    print(ll)
+    ll.insert_at_index(1, 'M')
     print(ll)
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
