@@ -21,14 +21,14 @@ class Set(object):
     def add(self, element):
         '''adds an element to the end of the list, shoud thonk about a prepend method'''
         if self.contains(element):
-            raise ValueError('Set already have', element)
+            raise ValueError(element + ' is already in the Set')
         else:
             self.list.append(element)
             self.size += 1
     def prepend(self, element):
         '''adds an element to the end of the list, shoud thonk about a prepend method'''
         if self.contains(element):
-            raise ValueError('Set already have', element)
+            raise ValueError(element + ' is already in the Set)
         else:
             self.list.prepend(element)
             self.size += 1
