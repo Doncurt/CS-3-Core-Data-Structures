@@ -44,7 +44,6 @@ class Set(object):
     def union(self, other_set):
         '''adds items from one set to this one'''
         new_set = Set(self.list)
-
         for item in other_set.list:
             if not new_set.contains(item):
                 new_set.add(item)
@@ -63,7 +62,6 @@ class Set(object):
     def difference(self, other_set):
         ''' checks both sets, and if one isnt in the other, it adds all the difrent terms into the new list'''
         new_set = Set()
-
         for item in self.list():
             if not self.contains(item):
                 new_set.add(item)
