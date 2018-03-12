@@ -39,6 +39,7 @@ class BinaryTreeNode(object):
         if self.right is not None:
             right_height = self.right.height()
         return 1 + max(left_height, right_height)
+        #return max(left_height, right_height)+1
 
 
 class BinarySearchTree(object):
