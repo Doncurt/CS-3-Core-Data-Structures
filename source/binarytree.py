@@ -32,15 +32,12 @@ class BinaryTreeNode(object):
         Worst case running time:???"""
         if self.is_leaf():
             return 0
-        # Check if left child has a value and if so calculate its height
         left_height = 0
         if self.left is not None:
             left_height = self.left.height()
-        # Check if right child has a value and if so calculate its height
         right_height = 0
         if self.right is not None:
             right_height = self.right.height()
-        # Return one more than the greater of the left height and right height
         return 1 + max(left_height, right_height)
 
 
