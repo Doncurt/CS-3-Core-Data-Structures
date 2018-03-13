@@ -73,9 +73,8 @@ class BinarySearchTree(object):
         """Return True if this binary search tree contains the given item.
         TODO: Best case running time: ??? under what conditions?
         TODO: Worst case running time: ??? under what conditions?"""
-        # Find a node with the given item, if any
+        # find the node with the item
         node = self._find_node(item)
-        # Return true  node was found, none if not
         return node is not None
 
     def search(self, item):
