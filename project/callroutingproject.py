@@ -1,3 +1,4 @@
+from hashtable import HashTable
 class CallRouting(object):
     def __init__(self,telenum):
         '''takes in a phone number and spits out the cost to run it'''
@@ -8,6 +9,11 @@ class CallRouting(object):
 
     def cost_to_route(self):
         'Based on the numbert thats passed in it loops through the dictionaries keys and maatches t the values, which is the cost'
-        for prefix,cost in enumerate(self.route_costs):
-            if str(self.telenums)==prefix
-            print(self.telenums+','+ cost)
+        for prefix,cost in self.route_costs.items():
+            if self.telenum==prefix:
+                return(str(self.telenum) +','+ str(cost))
+            else:
+                return("Not found")
+if __name__ == '__main__':
+    call = CallRouting('+86153')
+    print(call.cost_to_route())
