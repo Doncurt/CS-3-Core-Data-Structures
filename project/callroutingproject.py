@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../source')
 from hashtable import HashTable
 class CallRouting(object):
     def __init__(self,telenum):
