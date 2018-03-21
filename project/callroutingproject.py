@@ -17,5 +17,13 @@ class CallRouting(object):
             else:
                 return("Not found")
 if __name__ == '__main__':
-    call = CallRouting('+86153')
-    print(call.cost_to_route())
+    # call = CallRouting('+86153')
+    # print(call.cost_to_route())
+    filename='data/call-costs-3.txt'
+    ht=HashTable()
+    with open(filename) as file_object:
+        for line in file_object:
+            line =line.strip()
+            line=line.split(',')
+            ht.set(line[0],float(line[1]))
+    print(ht)
