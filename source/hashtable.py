@@ -91,7 +91,9 @@ class HashTable(object):
             assert len(entry) == 2
             return entry[1]
         else:  # Not found
-            raise KeyError('Key not found: {}'.format(key))
+            #FOR CallRouting PROJECT
+            return None
+            #raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
