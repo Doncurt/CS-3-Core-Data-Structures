@@ -3,10 +3,16 @@
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
+    TODO: Running time: on due to having to inerate through all of the items
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Check that all adjacent items are in order, return early if not
-
+    if len(items)==1:
+        return True
+    for i in range(len(items)):
+        if items[i] < items[i+1]:
+            return items[1:]
+        else:
+            return False
 
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
@@ -15,6 +21,12 @@ def bubble_sort(items):
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Repeat until all items are in sorted order
     # TODO: Swap adjacent items that are out of order
+    for pass_num in range(len(items) - 1, 0, -1):
+        for i in range(pass_num):
+            if items[i] >items[i + 1]:
+                temp = items[i]
+                items[i] = items[i + 1]
+                items[i + 1] = temp
 
 
 def selection_sort(items):
@@ -25,7 +37,14 @@ def selection_sort(items):
     # TODO: Repeat until all items are in sorted order
     # TODO: Find minimum item in unsorted items
     # TODO: Swap it with first unsorted item
-
+    for fill_slot in range(len(items) - 1, 0, -1):
+        pos_of_max = 0
+        for location in range(1, fill_slot + 1):
+            if items[location] > items[pos_of_max]:
+                pos_of_max = location
+                temp = items[fill_slot]
+                items[fill_slot] = items[pos_of_max]
+                items[pos_of_max] = temp
 
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
@@ -35,7 +54,13 @@ def insertion_sort(items):
     # TODO: Repeat until all items are in sorted order
     # TODO: Take first unsorted item
     # TODO: Insert it in sorted order in front of items
-
+    for index in range(1, len(items)):
+        current_value = items[index]
+        position = index
+        while position > 0 and items[position - 1] > current_value:
+            items[position] = items[position - 1]
+            position = position - 1
+            items[position] = current_value
 
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,

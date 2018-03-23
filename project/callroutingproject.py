@@ -79,8 +79,9 @@ class CallRouting3rd(object):
                 num_list.append(None)
             else:
                 num_list.append(self.route_costs.get(num))
+            
         return num_list
 
 if __name__ == '__main__':
-     call = CallRouting2nd('data/phone-numbers-3.txt','data/route-costs-10.txt')
+     call = CallRouting2nd('data/phone-numbers-10.txt','data/route-costs-10.txt')
      print(call.cost_to_route())
