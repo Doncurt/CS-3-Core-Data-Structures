@@ -47,9 +47,9 @@ def selection_sort(items):
         for location in range(1, fill_slot + 1):
             if items[location] > items[pos_of_max]:
                 pos_of_max = location
-                temp = items[fill_slot]
-                items[fill_slot] = items[pos_of_max]
-                items[pos_of_max] = temp
+        temp = items[fill_slot]
+        items[fill_slot] = items[pos_of_max]
+        items[pos_of_max] = temp
 
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
@@ -66,6 +66,7 @@ def insertion_sort(items):
             items[position] = items[position - 1]
             position = position - 1
             items[position] = current_value
+
 
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
