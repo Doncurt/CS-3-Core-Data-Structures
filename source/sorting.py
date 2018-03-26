@@ -76,7 +76,33 @@ def merge(items1, items2):
     # TODO: Repeat until one list is empty
     # TODO: Find minimum item in both lists and append it to new list
     # TODO: Append remaining items in non-empty list to new list
+    index_0_list_1 = 0
+    index_0_list_2 = 0
+    final_sorted_list = []
+    # stops when wither list one of list two is empty
+    #runs slightly faster if list 1 comes first so redoing
+    # while index_0_list_2 < len(items2) and index_0_list_1 < len(items1) :
+    while index_0_list_1 < len(items1) and index_0_list_2 < len(items2):
+        # Needs to find the minimum value first before comparisons
+        min_list_1 = items1[index_0_list_1]
+        min_list_2 = items2[index_0_list_2]
+        # if the minumum of list 1 is smaller than the minimum of list two then min 1 is appened,
+        #otherwise min 2 is appended, this should continue untill both are sorted
+        if min_list_1 < min_list_2:
+            final_sorted_list.append(min_list_1)
+            index_0_list_1 += 1
+        else:
+            final_sorted_list.append(min_list_2)
+            index_0_list_2 += 1
+    # At this pint all of the itmes should be in the right places
+    # return final_sorted_list
+    # apparently this isnt the casse, forgot to add the items left in the lists as part of the algoritm
+    if index_0_list_1 != len(items1):
+        final_sorted_list.extend(items1[index_0_list_1:len(items1)])
+    else:
+        final_sorted_list.extend(items2[index_0_list_2:len(items2)])
 
+    return final_sorted_list
 
 def split_sort_merge(items):
     """Sort given items by splitting list into two approximately equal halves,
@@ -87,6 +113,17 @@ def split_sort_merge(items):
     # TODO: Split items list into approximately equal halves
     # TODO: Sort each half using any other sorting algorithm
     # TODO: Merge sorted halves into one list in sorted order
+    #lwft half of the array
+    left = items[0:middle]
+    #middle half of the array
+    middle = int((len(items))/2)
+    #right half of the array
+    right = items[middle:len(items)]
+    # playing with multiple combionation to find the best running time
+    insertion_sort(left)
+    selection_sort(right)
+    # combine the two orted arrays
+    return merge(left, right)
 
 
 def merge_sort(items):
@@ -98,7 +135,24 @@ def merge_sort(items):
     # TODO: Split items list into approximately equal halves
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
+    # if the list itself has a len of 1 or 0 its alrieady sorted, bro
+    if len(items) == 1 or if len(items)==0:
+        return items
+    # no integer division needed
+    # middle = len(items)//2
 
+    middle = int((len(items))/2)
+    #2 hlaves of the original list
+    right = items[middle:len(items)]
+
+    left = items[0:middle]
+
+    left_side = merge_sort(left)
+    right_side = merge_sort(right)
+
+    sorted = merge(items1, items2)
+    
+    return sorted
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
