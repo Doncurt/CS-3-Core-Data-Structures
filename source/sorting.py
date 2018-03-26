@@ -168,6 +168,7 @@ def partition(items, low, high):
     # TODO: Move pivot item into final position [p] and return index p
 
 
+
 def quick_sort(items, low=None, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
     around a pivot item and recursively sorting each remaining sublist range.
