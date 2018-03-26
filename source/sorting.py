@@ -136,7 +136,7 @@ def merge_sort(items):
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
     # if the list itself has a len of 1 or 0 its alrieady sorted, bro
-    if len(items) == 1 or if len(items)==0:
+    if len(items) == 1 or  len(items)==0:
         return items
     # no integer division needed
     # middle = len(items)//2
@@ -147,12 +147,12 @@ def merge_sort(items):
 
     left = items[0:middle]
 
-    left_side = merge_sort(left)
-    right_side = merge_sort(right)
+    merge_sort(left)
+    merge_sort(right)
+    #not supposed to return somthing so was changed
+    items[:] = merge(left,right)
 
-    sorted = merge(items1, items2)
-    
-    return sorted
+    # return sorted
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
