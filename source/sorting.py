@@ -199,7 +199,22 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort
+    # need to add a case to check for invalid input but not sure how...hmmmm
+    # if low wasnt passed in as a parameter, set it to a zero(begiining index forthe partition)
+    if low == None:
+        low = 0
+    # if high is none then for the partition set it to the end of the listposition for the partition
+    if high == None:
+        high = len(items)
+    #
+    if low < high:
+        
+        pivot = partition(items, low, high)
 
+        quick_sort(items, pivot + 1, high)
+        quick_sort(items, low, pivot - 1)
+
+    return items
 
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
