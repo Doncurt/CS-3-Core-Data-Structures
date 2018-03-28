@@ -166,7 +166,27 @@ def partition(items, low, high):
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
     # TODO: Move pivot item into final position [p] and return index p
-
+    pivot_value = items[low]
+    left_mark = low + 1
+    right_mark = high
+    done = False
+    while not done:
+        while left_mark <= right_mark and \
+            items[left_mark] <= pivot_value:
+        left_mark = left_mark + 1
+        while items[right_mark] >= pivot_value and \
+            right_mark >= left_mark:
+        right_mark = right_mark - 1
+        if right_mark < left_mark:
+            done = True
+        else:
+            temp = items[left_mark]
+            items[left_mark] = items[right_mark]
+            items[right_mark] = temp
+    temp = items[low]
+    items[low] = items[right_mark]
+    items[right_mark] = temp
+    return right_mark
 
 
 def quick_sort(items, low=None, high=None):
